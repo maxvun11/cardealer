@@ -14,15 +14,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"  href="{{ asset('css/bootstrap.min.css') }}">
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- fevicon -->
-    <link rel="icon" href="images/logo.png" type="image/gif" />
+    <link rel="icon" href="{{ asset('images/logo.png') }}"type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"media="screen">
@@ -50,7 +50,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="{{ url('') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" /></a>
+                                    <a href="{{ url('/contactUsPage') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" /></a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="collapse navbar-collapse" id="navbarsExample04">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('homePage') }}">Home</a>
+                                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('aboutUsPage') }}">About Us</a>
