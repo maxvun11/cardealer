@@ -30,3 +30,10 @@ Route::get('/afterSalesPage', function () {
     return view('afterSalesPage');
 });
 
+Route::get('/loginPage', function () {
+    return view('loginPage');
+});
+
+Route::get('/loginPage/reg', function () {
+    return view('registerPage');
+});
