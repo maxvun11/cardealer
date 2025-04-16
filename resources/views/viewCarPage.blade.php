@@ -3,18 +3,25 @@
 @section('title', 'Car List')
 
 @section('content')
+
+<div class="wedo" style="display: flex; justify-content: flex-end;padding-right:50px; padding-top:50px; ">
+    <button style="width:fit-content;"onclick="window.location.href='{{ route('updateCar') }}'">Update Car Inventory</button>
+    </div>
     <!-- Brand Buttons -->
-    <div class="brand-section text-center">
+    <div class="brand-section text-center" style="padding-top:0;" >
         @foreach($brands as $brand)
             <button class="brand-btn" onclick="scrollToBrand('{{ $brand->brandName }}')">
                 {{ strtoupper($brand->brandName) }}
             </button>
         @endforeach
     </div>
+    
+
+   
 
     <!-- Car Sections -->
     @foreach($brands as $brand)
-        <div class="wedo">
+        <div class="wedo" style="padding-top:0;">
             <div id="{{ $brand->brandName }}" class="brand-section">
                 <div class="container">
                     <div class="row">
