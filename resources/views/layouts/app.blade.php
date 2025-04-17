@@ -7,3 +7,4 @@
 </main>
 
 @include('layouts.footer')
+

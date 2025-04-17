@@ -31,10 +31,14 @@ class Cars extends Controller
         return view('carDetailPage', ['categories' => $categories]);
     }
     
-    
+    public function updateCar(Request $request, Car $car)
+    {
+        $this->authorize('update', $car); // Ensures only admins can update
 
+        $car->update($request->all());
 
-
+        return redirect()->route('viewCarPage')->with('success', 'Car updated successfully!');
+    }
 
 
 
