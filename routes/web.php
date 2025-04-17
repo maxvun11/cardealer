@@ -13,9 +13,27 @@ Route::get('/', function () {
 });
 
 
-Route::get('/viewCarPage',[Cars::class, 'showAllCar']);
+Route::get('/viewCarPage',[Cars::class, 'showAllCar'])->name('viewCar');
 
 
+
+
+Route::middleware(['isAdmin'])->group(function () {
+    Route::post('/createCar/{id}', [Cars::class, 'createCar'])->name('createCar');
+    Route::post('/createBrand',[Cars::class, 'createBrand'])->name('createBrand');
+    Route::get('/createCarFormPage/{id}', [Cars::class,'showCreateModelPage'])-> name('createCarForm');
+    Route::get('/createBrandFormPage',function(){
+        return view('createBrandFormPage');
+    })-> name('createBrandForm');
+    Route::get('/updateCarPage', [Cars::class,'showUpdatePage'])->name('updateCar');
+    Route::get('/updateCarFormPage/{id}', [Cars::class,'showUpdateModelPage'])->name('updateCarForm');
+    Route::get('/updateCarPage/{id}', [Cars::class,'showCategoryUpdatePage'])->name('updateCategory');
+    
+    Route::put('/updateCarModel', [Cars::class, 'updateCar'])->name('updateModel');
+    Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
+    Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
+    Route::view('/viewAppointmentPage', 'viewAppointmentPage')->name('viewAppointment');
+});
 
 
 

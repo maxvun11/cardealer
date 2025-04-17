@@ -73,6 +73,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
                                     </li>
+                                    @can('isAdmin')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
+                                    </li>
+                                    @endcan
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('afterSalesPage') }}">After Sales</a>
                                     </li>
