@@ -10,10 +10,11 @@ Route::get('/aboutUsPage', function () {
 
 Route::get('/', function () {
     return view('homePage');
-});
+})->name('home');
 
 
 Route::get('/viewCarPage',[Cars::class, 'showAllCar'])->name('viewCar');
+
 
 
 
