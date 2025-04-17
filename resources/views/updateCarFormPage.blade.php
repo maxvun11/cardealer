@@ -3,6 +3,17 @@
 @section('title', 'Update Car Inventory Form')
 
 @section('content')
+
+@if ($errors->any())
+<br>
+    <div class="alert alert-danger" style="padding-top:20px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container" id="booking-container">
         <h1>Update Car Inventory Form</h1>
         

@@ -19,7 +19,7 @@ Route::get('/viewCarPage',[Cars::class, 'showAllCar'])->name('viewCar');
 
 
 
-Route::middleware(['isAdmin'])->group(function () {
+//Route::middleware(['isAdmin'])->group(function () {
     Route::post('/createCar/{id}', [Cars::class, 'createCar'])->name('createCar');
     Route::post('/createBrand',[Cars::class, 'createBrand'])->name('createBrand');
     Route::get('/createCarFormPage/{id}', [Cars::class,'showCreateModelPage'])-> name('createCarForm');
@@ -34,7 +34,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
     Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
     Route::view('/viewAppointmentPage', 'viewAppointmentPage')->name('viewAppointment');
-});
+//});
 
 
 

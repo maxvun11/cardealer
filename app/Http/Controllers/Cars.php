@@ -84,7 +84,7 @@ class Cars extends Controller
         ->where('car_categories_id', $category->id)
         ->count();
 
-        if ($modelCount > 0) {
+        if ($modelCount > 1) {
         return redirect()->back()
         ->withErrors(['model' => 'This car model already exists in the selected category.'])
         ->withInput();
