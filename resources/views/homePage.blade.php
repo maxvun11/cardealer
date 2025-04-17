@@ -4,6 +4,14 @@
 
 @section('content')
 
+@if(session('error'))
+<br>
+    <div class="alert alert-danger" style="margin-bottom:0;">
+       
+            {{ session('error') }}
+       
+    </div>
+@endif
     <!-- banner -->
     <section class="banner_main">
         <div id="banner1" class="carousel slide" data-ride="carousel">
