@@ -35,8 +35,8 @@ return new class extends Migration
             $table->id();
             $table->string('modelName');
             $table->string('description');
-            $table->string('description2')->nullable();
-            $table->string('description3')->nullable();
+            $table->string('description2');
+            $table->string('description3');
             $table->unsignedBigInteger('car_categories_id'); 
 
              // Foreign Key Constraint
