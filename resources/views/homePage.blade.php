@@ -138,7 +138,7 @@
                     <div class="row">
                         <!-- Toyota Supra -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="viewCarPage">
+                            <a href="carDetailPage/1">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/banner.jpg');">
                                         <div class="work_text">
@@ -150,7 +150,7 @@
                         </div>
                         <!-- Nissan NSX -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="viewCarPage">
+                            <a href="carDetailPage/5">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img2.png');">
                                         <div class="work_text">
@@ -166,7 +166,7 @@
                     <div class="row image-row-gap">
                         <!-- Ford Mustang -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="viewCarPage">
+                            <a href="carDetailPage/13">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img3.png');">
                                         <div class="work_text">
@@ -178,7 +178,7 @@
                         </div>
                         <!-- Ferrari F40 -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="viewCarPage">
+                            <a href="carDetailPage/9">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img4.png');">
                                         <div class="work_text">
