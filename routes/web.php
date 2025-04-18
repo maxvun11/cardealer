@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Cars;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 Route::get('/carDetailPage/{id}', [Cars::class, 'showCarDetail'])->name('carDetailPage');
 
@@ -56,3 +57,8 @@ Route::get('/loginPage', function () {
 Route::get('/loginPage/reg', function () {
     return view('registerPage');
 });
+
+
+
+Route::post('/contacts/submit', [ContactController::class, 'submit'])->name('contacts.submit');
+
