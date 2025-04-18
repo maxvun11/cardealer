@@ -4,14 +4,6 @@
 
 @section('content')
 
-@if(session('error'))
-<br>
-    <div class="alert alert-danger" style="margin-bottom:0;">
-       
-            {{ session('error') }}
-       
-    </div>
-@endif
     <!-- banner -->
     <section class="banner_main">
         <div id="banner1" class="carousel slide" data-ride="carousel">
@@ -138,7 +130,7 @@
                     <div class="row">
                         <!-- Toyota Supra -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="carDetailPage/1">
+                            <a href="viewCarPage">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/banner.jpg');">
                                         <div class="work_text">
@@ -150,7 +142,7 @@
                         </div>
                         <!-- Nissan NSX -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="carDetailPage/5">
+                            <a href="viewCarPage">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img2.png');">
                                         <div class="work_text">
@@ -166,7 +158,7 @@
                     <div class="row image-row-gap">
                         <!-- Ford Mustang -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="carDetailPage/13">
+                            <a href="viewCarPage">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img3.png');">
                                         <div class="work_text">
@@ -178,7 +170,7 @@
                         </div>
                         <!-- Ferrari F40 -->
                         <div class="col-md-6 margin_bottom">
-                            <a href="carDetailPage/9">
+                            <a href="viewCarPage">
                                 <div class="work parallax">
                                     <div class="parallax-image" style="background-image: url('images/img4.png');">
                                         <div class="work_text">
