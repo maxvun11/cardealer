@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+@if (session('success'))
+<br>
+    <div class="alert alert-success " role="alert">
+        {{ session('success') }}
+        
+    </div>
+@endif
 <div class="container">
     <h1 style="margin-top:50px; text-align:center;">Update Car Inventory - {{$brand->brandName}}</h1>
 <div  class="row justify-content-center">

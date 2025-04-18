@@ -79,7 +79,16 @@ class Cars extends Controller
             'description3' => $validated['modelDesc3'],
             'car_categories_id' => $validated['category_id'],
         ]);
-    
+        
+        $modelCount = CarModel::where('modelName', $request->model)
+        ->where('car_categories_id', $category->id)
+        ->count();
+
+        if ($modelCount > 1) {
+        return redirect()->back()
+        ->withErrors(['model' => 'This car model already exists in the selected category.'])
+        ->withInput();
+    }
         return redirect()->route('updateCategory', ['id' => $request->brand_id])
                  ->with('success', 'Car inventory updated successfully.');
 
@@ -152,6 +161,14 @@ class Cars extends Controller
                 'imageURL' => $validated['imageURL'],
             ]);
         }
+
+        if (CarModel::where('modelName', $validated['model'])
+        ->where('car_categories_id', $category->id)
+        ->exists()) {
+            return redirect()->back()
+                ->withErrors(['model' => 'This car model already exists in the selected category.'])
+                ->withInput();
+}
         
         CarModel::create([
             'modelName' => $validated['model'],

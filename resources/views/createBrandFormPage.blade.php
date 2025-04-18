@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Create Car Inventory Form')
@@ -14,6 +15,8 @@
         </ul>
     </div>
 @endif
+
+
     <div class="container" id="booking-container">
        
         <h1>Create Car Inventory Form - Create New Brand</h1>
