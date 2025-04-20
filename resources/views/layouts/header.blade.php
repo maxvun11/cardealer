@@ -101,18 +101,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
                                 </li>
-<<<<<<< HEAD
                                 @can('update-car')
-=======
-
-                                @if(Gate::allows('update-car'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('updateCarPage') }}">Update Car</a>
-                                    </li>
-                                @endif
-
-                                @can('isAdmin')
->>>>>>> upstream/main
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
                                     </li>
