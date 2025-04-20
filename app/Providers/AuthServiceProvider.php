@@ -28,5 +28,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-car', function (User $user) {
             return $user->role === 'admin';
         });
+        
     }
 }

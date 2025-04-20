@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('brochureLink');
             $table->unsignedBigInteger('brand_id'); 
     
-             // Foreign Key Constraint
+            
             $table->foreign('brand_id')
                 ->references('id')
                 ->on('brands')
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('description3')->nullable();
             $table->unsignedBigInteger('car_categories_id'); 
 
-             // Foreign Key Constraint
+           
              $table->foreign('car_categories_id')
                 ->references('id')
                 ->on('car_categories')
@@ -52,6 +52,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carbrand');
+        Schema::dropIfExists('brands');
+        Schema::dropIfExists('car_categories');
+        Schema::dropIfExists('car_models');
     }
 };

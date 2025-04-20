@@ -6,6 +6,7 @@
 
 @if ($errors->any())
 <br>
+<br>
     <div class="alert alert-danger" style="padding-top:20px;">
         <ul>
             @foreach ($errors->all() as $error)

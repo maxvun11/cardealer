@@ -77,9 +77,7 @@ Route::post('/logout', function (Request $request) {
     return redirect('/');
 })->name('logout');
 
-Route::get('/updateCarPage', function () {
-    return view('updateCar');
-})->middleware('can:update-car')->name('updateCarPage');
+
 
 
 Route::post('/contacts/submit', [ContactController::class, 'submit'])->name('contacts.submit');
