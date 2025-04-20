@@ -6,7 +6,7 @@ use App\Models\CarCategory;
 use App\Models\CarModel;
 use Illuminate\Http\Request;
 
-class Cars extends Controller
+class CarController extends Controller
 {
 
 
@@ -20,10 +20,8 @@ class Cars extends Controller
   
     public function showCarDetail($id)
     {
-        // Fetch the category along with related models
         $categories = CarCategory::with('carModels')->find($id);
         
-        // Check if the category exists
         if (!$categories) {
             return redirect()->back()->with('error', 'Category not found!');
         }
@@ -34,7 +32,6 @@ class Cars extends Controller
     public function showCategoryUpdatePage($id) {
         $brand_id = $id;
     
-        // You need to fetch the brand first to pass to the view (optional)
         $brand = Brand::findOrFail($id);
     
         $categories = CarCategory::with('carModels')
@@ -88,7 +85,7 @@ class Cars extends Controller
         return redirect()->back()
         ->withErrors(['model' => 'This car model already exists in the selected category.'])
         ->withInput();
-    }
+        }
         return redirect()->route('updateCategory', ['id' => $request->brand_id])
                  ->with('success', 'Car inventory updated successfully.');
 
@@ -125,9 +122,8 @@ class Cars extends Controller
     {
         $validated = $request->validate([
           
-            'category_id' => 'nullable',
+            'category_id' => 'required',
             'category' => 'required_if:category_id,new|nullable|string|max:255',
-            
             'model' => 'required|string|max:255',
             'brochureLink' => 'required|url',
             'imageURL' => 'required|url',
@@ -137,8 +133,7 @@ class Cars extends Controller
 
         ]);
     
-        // Handle category
-        if ($request->category_id === 'new' || !$request->category_id) {
+        if ($request->category_id === 'new') {
             
             if (CarCategory::where('categoryName', $request->input('category'))->exists()) {
                 return redirect()->back()
@@ -153,13 +148,11 @@ class Cars extends Controller
                 'brochureLink' => $validated['brochureLink'],
                 'imageURL' => $validated['imageURL'],
             ]);
-        }
-        } else {
+            }
+        } 
+
+        else {
             $category = CarCategory::find( $validated['category_id']);
-            $category->update([
-                'brochureLink' => $validated['brochureLink'],
-                'imageURL' => $validated['imageURL'],
-            ]);
         }
 
         if (CarModel::where('modelName', $validated['model'])
@@ -168,7 +161,7 @@ class Cars extends Controller
             return redirect()->back()
                 ->withErrors(['model' => 'This car model already exists in the selected category.'])
                 ->withInput();
-}
+            }
         
         CarModel::create([
             'modelName' => $validated['model'],

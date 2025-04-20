@@ -50,7 +50,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                         <div class="full">
                             <div class="center-desk">
-                                <<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                                     <div class="full text-start">
                                         <div class="logo">
                                             <button class="btn p-0 border-0 bg-transparent" id="openSliderBtn">
@@ -90,14 +90,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
                                 </li>
-                                @can('isAdmin')
+                                @can('update-car')
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
                                     </li>
                                 @endcan
+                                @cannot('update-car')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('afterSalesPage') }}">After Sales</a>
                                 </li>
+                                @endcannot
                                 <li class="nav-item">
                                     <a class="nav-link" href="#contact">Contact Us</a>
                                 </li>

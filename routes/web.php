@@ -1,9 +1,9 @@
 <?php
-use App\Http\Controllers\Cars;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
-Route::get('/carDetailPage/{id}', [Cars::class, 'showCarDetail'])->name('carDetailPage');
+Route::get('/carDetailPage/{id}', [CarController::class, 'showCarDetail'])->name('carDetailPage');
 
 Route::get('/aboutUsPage', function () {
     return view('aboutUsPage');
@@ -14,28 +14,28 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/viewCarPage',[Cars::class, 'showAllCar'])->name('viewCar');
+Route::get('/viewCarPage',[CarController::class, 'showAllCar'])->name('viewCar');
 
 
 
 
 
-Route::middleware(['isAdmin'])->group(function () {
-    Route::post('/createCar/{id}', [Cars::class, 'createCar'])->name('createCar');
-    Route::post('/createBrand',[Cars::class, 'createBrand'])->name('createBrand');
-    Route::get('/createCarFormPage/{id}', [Cars::class,'showCreateModelPage'])-> name('createCarForm');
+//Route::middleware('can:update-car')->group(function () {
+    Route::post('/createCar/{id}', [CarController::class, 'createCar'])->name('createCar');
+    Route::post('/createBrand',[CarController::class, 'createBrand'])->name('createBrand');
+    Route::get('/createCarFormPage/{id}', [CarController::class,'showCreateModelPage'])-> name('createCarForm');
     Route::get('/createBrandFormPage',function(){
         return view('createBrandFormPage');
     })-> name('createBrandForm');
-    Route::get('/updateCarPage', [Cars::class,'showUpdatePage'])->name('updateCar');
-    Route::get('/updateCarFormPage/{id}', [Cars::class,'showUpdateModelPage'])->name('updateCarForm');
-    Route::get('/updateCarPage/{id}', [Cars::class,'showCategoryUpdatePage'])->name('updateCategory');
+    Route::get('/updateCarPage', [CarController::class,'showUpdatePage'])->name('updateCar');
+    Route::get('/updateCarFormPage/{id}', [CarController::class,'showUpdateModelPage'])->name('updateCarForm');
+    Route::get('/updateCarPage/{id}', [CarController::class,'showCategoryUpdatePage'])->name('updateCategory');
     
-    Route::put('/updateCarModel', [Cars::class, 'updateCar'])->name('updateModel');
-    Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
-    Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
+    Route::put('/updateCarModel', [CarController::class, 'updateCar'])->name('updateModel');
+    Route::delete('/brands/{id}', [CarController::class, 'deleteBrand'])->name('deleteBrand');
+    Route::delete('/CarController/{id}', [CarController::class, 'deleteCar'])->name('deleteCar');
     Route::view('/viewAppointmentPage', 'viewAppointmentPage')->name('viewAppointment');
-});
+//});
 
 
 
