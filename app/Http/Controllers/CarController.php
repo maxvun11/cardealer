@@ -54,7 +54,9 @@ class CarController extends Controller
         $validated = $request->validate([
             'category_id' => 'required|integer',
             'model' => 'required|string',
+            'brandImageURL' => 'required|url',
             'brochureLink' => 'required|url',
+            'brandImageURL' => 'required|url',
             'imageURL' => 'required|url',
             'modelDesc' => 'required|string',
             'modelDesc2' => 'nullable|string',

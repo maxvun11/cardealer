@@ -50,7 +50,7 @@
 <body class="main-layout">
     <!-- loader -->
     <div class="loader_bg">
-        <div class="loader"><img src="{{ asset('images/loading.gif') }}" alt="Loading..." /></div>
+        <div class="loader"><img src="{{ asset('images/loading_2.gif') }}" alt="Loading..." /></div>
     </div>
     <!-- end loader -->
 
@@ -63,7 +63,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo d-flex align-items-center justify-content-between">
-                                    <a href="{{ url('#contact') }}">
+                                    <a href="{{ url('/#contact') }}">
                                         <img src="{{ asset('images/logo.png') }}" alt="Logo" />
                                     </a>
                                     @if(Auth::check())
@@ -73,8 +73,65 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 px-0">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark px-0">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+                                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('aboutUsPage') }}">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
+                                    </li>
+                    
+                                    @if(Gate::allows('update-car'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('updateCarPage') }}">Update Car</a>
+                                        </li>
+                                    @endif
+                    
+                                    @can('update-car')
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
+                                        </li>
+                                    @endcan
+                                    @cannot('update-car')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('afterSalesPage') }}">After Sales</a>
+                                    </li>
+                                    @endcannot
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#contact">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        @if(Auth::check())
+                                            <a href="#" class="nav-link"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-sign-out-alt padd_right" aria-hidden="true"></i>Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
 
+                                        @else
+                                            <a class="nav-link" href="{{ url('loginPage') }}">
+                                                <i class="fa fa-user-circle padd_right" aria-hidden="true"></i>Login/Sign Up
+                                            </a>
+                                        @endif
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
                 <!-- Slide-in Menu Panel -->
                 <div id="customSlider" class="custom-slider bg-dark text-white p-4">
                     <button class="btn btn-light mb-3" id="closeSliderBtn">Close</button>
@@ -82,59 +139,7 @@
                         <li class="nav-item mb-2"><a href="{{ url('/') }}" class="nav-link text-white">Check Model</a></li>
                     </ul>
                 </div>
-
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                    <nav class="navigation navbar navbar-expand-md navbar-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('aboutUsPage') }}">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
-                                </li>
-                                @can('update-car')
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
-                                    </li>
-                                @endcan
-                                @cannot('update-car')
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('afterSalesPage') }}">After Sales</a>
-                                </li>
-                                @endcannot
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#contact">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    @if(Auth::check())
-                                        <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-sign-out-alt padd_right" aria-hidden="true"></i>Logout
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-
-                                    @else
-                                        <a class="nav-link" href="{{ url('loginPage') }}">
-                                            <i class="fa fa-user-circle padd_right" aria-hidden="true"></i>Login/Sign Up
-                                        </a>
-                                    @endif  
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
             </div>
-        </div>
         </div>
     </header>
     <!-- end header -->

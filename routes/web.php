@@ -2,8 +2,10 @@
 use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CarViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
@@ -36,17 +38,17 @@ Route::middleware('can:update-car')->group(function () {
     Route::get('/updateCarFormPage/{id}', [CarController::class,'showUpdateModelPage'])->name('updateCarForm');
     Route::get('/updateCarPage/{id}', [CarController::class,'showCategoryUpdatePage'])->name('updateCategory');
     
-    Route::put('/updateCarModel', [CarController::class, 'updateCar'])->name('updateModel');
-    Route::delete('/brands/{id}', [CarController::class, 'deleteBrand'])->name('deleteBrand');
-    Route::delete('/CarController/{id}', [CarController::class, 'deleteCar'])->name('deleteCar');
-    Route::view('/viewAppointmentPage', 'viewAppointmentPage')->name('viewAppointment');
+    Route::put('/updateCarModel', [Cars::class, 'updateCar'])->name('updateModel');
+    Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
+    Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
+    Route::get('/viewAppointmentPage', [AppointmentController::class, 'index'])->name('viewAppointmentPage');
+    Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');
 });
 
 
 
-Route::get('/bookCarPage/{id}', function ($id) {
-    return view('bookCarPage', ['id' => $id]); 
-});
+Route::get('/bookCarPage/{id}', [CarViewController::class, 'create'])->name('bookCarPage');
+
 Route::get('/contactUsPage', function () {
     return view('contactUsPage');
 });
@@ -81,4 +83,5 @@ Route::post('/logout', function (Request $request) {
 
 
 Route::post('/contacts/submit', [ContactController::class, 'submit'])->name('contacts.submit');
-
+Route::post('/afterSalesPage', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');

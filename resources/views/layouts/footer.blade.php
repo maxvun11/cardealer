@@ -8,64 +8,49 @@
         </div>
     </div>
 </div>
-
+<div id="flash-message" data-message="{{ session('success') }}"></div>
 <footer id="contact">
-    <div class="footer">
+    <div class="footer pt-0">
         <div class="container">
             <div class="row align-items-left">
-                <!-- Contact Form (LEFT) -->
-                <div class="col-md-8">
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success_contact') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-
-                    <form id="contactForm" class="main_form" method="POST" data-url="{{ route('contacts.submit') }}">
-                        @csrf
-                        <div id="success-message" class="alert alert-success d-none"></div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input class="contactus form-control" placeholder="Full Name" type="text"
-                                    name="full_name" required>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <input class="contactus form-control" placeholder="Email" type="email" name="email"
-                                    required>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <input class="contactus form-control" placeholder="Phone Number" type="text"
-                                    name="phone_number" required>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <textarea class="textarea form-control" placeholder="Message" name="message" rows="4"
-                                    required></textarea>
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <button class="send_btn btn btn-danger" type="submit">Send</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Contact Info (RIGHT but aligned to top-left) -->
-                <div class="col-md-4">
+                <div class="col-md-12 d-flex">
                     <div class="titlepage">
                         <h2 class="mt-3">Contact Us</h2>
                     </div>
-                    <ul class="location_icon list-unstyled text-start ms-0 ps-0">
+                    <ul class="location_icon list-unstyled text-end ml-auto mt-3">
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i> Malaysia</li>
                         <li><i class="fa fa-volume-control-phone" aria-hidden="true"></i> +60165885735</li>
                         <li><i class="fa fa-envelope" aria-hidden="true"></i> pytho@gmail.com</li>
                     </ul>
                 </div>
+                <div class="col-md-12">
+                    <form id="contactForm" class="main_form " method="POST" data-url="{{ route('contacts.submit') }}">
+                        @csrf
+                        <div id="success-message" class="alert alert-success d-none"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input class="contactus form-control" placeholder="Full Name" type="text" name="full_name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="contactus form-control" placeholder="Email" type="email" name="email" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="contactus form-control" placeholder="Phone Number" type="text" name="phone_number" required>
+                            </div>
+                            <div class="col-md-10 mt-1">
+                                <textarea class="textarea form-control" placeholder="Message" name="message" rows="2" required></textarea>
+                            </div>
+                            <div class="col-md-2 mt-1">
+                                <button class="send_btn btn btn-danger" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
             </div>
 
             <!-- Footer Bottom -->
-            <div class="row mt-5">
+            <div class="row py-2">
                 <div class="col-md-12 text-center">
                     <p>&copy; 2025 All Rights Reserved By Pythogorax.</p>
                 </div>
