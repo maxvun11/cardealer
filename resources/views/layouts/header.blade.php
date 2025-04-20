@@ -63,7 +63,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo d-flex align-items-center justify-content-between">
-                                    <a href="{{ url('/contactUsPage') }}">
+                                    <a href="{{ url('/#contact') }}">
                                         <img src="{{ asset('images/logo.png') }}" alt="Logo" />
                                     </a>
                                     @if(Auth::check())
