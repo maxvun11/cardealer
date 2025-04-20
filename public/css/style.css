@@ -248,7 +248,7 @@ button {
 .loader_bg {
      position: fixed;
      z-index: 9999999;
-     background: #fff;
+     background: #000;
      width: 100%;
      height: 100%;
 }
@@ -262,10 +262,13 @@ button {
      display: flex;
      justify-content: center;
      align-items: center;
+     animation: fadeOut 1s ease-in-out forwards;
+     animation: fadeIn 1s ease-in-out forwards;
 }
 
 .loader img {
-     width: 280px;
+     width: 100px;
+     padding-bottom: 5%;
 }
 
 ul.btn {
@@ -649,7 +652,6 @@ body {
      /* Enables parallax effect */
      border-radius: 30px;
      position: relative;
-     transition: transform 0.3s ease-in-out;
 }
 
 /* Hover Zoom Effect */
@@ -674,7 +676,6 @@ body {
      flex-direction: column;
      justify-content: center;
      opacity: 0;
-     transition: opacity 0.5s ease-in-out;
 }
 
 /* Text Hover Effect */
@@ -1026,6 +1027,7 @@ button:hover {
 
 .popup .social-icons {
      display: flex;
+     flex-direction: column;
      justify-content: center;
      gap: 10px;
 }

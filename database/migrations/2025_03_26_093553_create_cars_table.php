@@ -20,6 +20,7 @@ return new class extends Migration
         Schema::create('car_categories', function (Blueprint $table) {
             $table->id();
             $table->string('categoryName');
+            $table->string('brandImageURL');
             $table->string('imageURL');
             $table->string('brochureLink');
             $table->unsignedBigInteger('brand_id'); 

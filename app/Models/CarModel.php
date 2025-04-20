@@ -20,4 +20,9 @@ class CarModel extends Model
     public function category() {
         return $this->belongsTo(CarCategory::class);
     }
+
+    public function carViews()
+    {
+        return $this->hasMany(CarView::class);
+    }
 }

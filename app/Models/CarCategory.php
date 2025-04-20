@@ -9,6 +9,7 @@ class CarCategory extends Model
     protected $fillable = [
         'categoryName',
         'brochureLink',
+        'brandImageURL',
         'imageURL',
         'brand_id',
     ];

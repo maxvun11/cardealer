@@ -217,7 +217,7 @@
                         <div class="about_img">
                             <!-- "Who We Are" is always visible -->
                             <div class="about_box">
-                                <h3>We are UTARIANS authorized car dealer</h3>
+                                <h3>We are UTAR smugglers</h3>
                                 <a href="aboutUsPage" class="read_more">Read More</a>
                             </div>
                         </div>

@@ -2,8 +2,10 @@
 use App\Http\Controllers\Cars;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CarViewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
@@ -39,14 +41,14 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('/updateCarModel', [Cars::class, 'updateCar'])->name('updateModel');
     Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
     Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
-    Route::view('/viewAppointmentPage', 'viewAppointmentPage')->name('viewAppointment');
+    Route::get('/viewAppointmentPage', [AppointmentController::class, 'index'])->name('viewAppointmentPage');
+    Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');
 });
 
 
 
-Route::get('/bookCarPage/{id}', function ($id) {
-    return view('bookCarPage', ['id' => $id]); 
-});
+Route::get('/bookCarPage/{id}', [CarViewController::class, 'create'])->name('bookCarPage');
+
 Route::get('/contactUsPage', function () {
     return view('contactUsPage');
 });
@@ -83,4 +85,5 @@ Route::get('/updateCarPage', function () {
 
 
 Route::post('/contacts/submit', [ContactController::class, 'submit'])->name('contacts.submit');
-
+Route::post('/afterSalesPage', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');

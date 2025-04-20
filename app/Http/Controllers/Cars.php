@@ -58,6 +58,7 @@ class Cars extends Controller
             'category_id' => 'required|integer',
             'model' => 'required|string',
             'brochureLink' => 'required|url',
+            'brandImageURL' => 'required|url',
             'imageURL' => 'required|url',
             'modelDesc' => 'required|string',
             'modelDesc2' => 'nullable|string',
