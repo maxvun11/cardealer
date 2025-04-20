@@ -97,14 +97,16 @@
                                         </li>
                                     @endif
                     
-                                    @can('isAdmin')
+                                    @can('update-car')
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
                                         </li>
                                     @endcan
+                                    @cannot('update-car')
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('afterSalesPage') }}">After Sales</a>
                                     </li>
+                                    @endcannot
                                     <li class="nav-item">
                                         <a class="nav-link" href="#contact">Contact Us</a>
                                     </li>

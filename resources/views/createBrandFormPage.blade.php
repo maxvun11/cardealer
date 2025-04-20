@@ -33,6 +33,10 @@
                 <label for="brand_desc">New Brand Description:</label>
                 <input type="text" id="brand_desc" name="brand_desc" required>
             </div>
+            <div class="form-group">
+                <label for="brandImageURL">New Brand Image URL:</label>
+                <input type="url" id="brandImageURL" name="brandImageURL" required>
+            </div>
 
             <button class="btn-danger" type="submit">Create Car Inventory</button>
 </div>

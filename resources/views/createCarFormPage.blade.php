@@ -6,6 +6,7 @@
 
 @if ($errors->any())
 <br>
+<br>
     <div class="alert alert-danger" style="padding-top:20px;">
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,40 +21,35 @@
         <form action="{{ route('createCar', ['id' => $brand_id]) }}" method="POST">
 
         @csrf
-<div class="form-group">
-        <label for="categorySelect">Category:</label>
-        <select name="category_id" id="categorySelect" class="form-control" onchange="handleCategoryChange(this)">
-            @foreach ($categories as $category)
-            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-    {{ $category->categoryName }}
-</option>
-            @endforeach
-            <option value="new" {{ old('category_id') == 'new' ? 'selected' : '' }}>Create New Category</option>
+        <div class="form-group">
+                <label for="categorySelect">Category:</label>
+                <select name="category_id" id="categorySelect" class="form-control" onchange="handleCategoryChange(this)">
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                        {{ $category->categoryName }}
+                    </option>
+                    @endforeach
+                    <option value="new" {{ old('category_id') == 'new' ? 'selected' : '' }}>Create New Category</option>
 
-        </select>
-    </div>
-    <div id="newCategoryField" style="{{ old('category_id') == 'new' ? '' : 'display: none;' }}">
-    <div class="form-group">
-        <label for="category">New Category:</label>
-        <input type="text" id="category" name="category" value="{{ old('category') }}">
-    </div>
-    <div class="form-group">
-    <label for="brochureLink">Brochure Link:</label>
-    <input type="url" id="brochureLink" name="brochureLink" 
-           value="{{ old('category_id') == 'new' ? old('brochureLink') : ($category->brochureLink ?? '') }}">
-</div>
+                </select>
+        </div>
+            <div id="newCategoryField" style="{{ old('category_id') == 'new' ? '' : 'display: none;' }}">
+            <div class="form-group">
+                <label for="category">New Category:</label>
+                <input type="text" id="category" name="category" value="{{ old('category') }}">
+            </div>
+            <div class="form-group">
+            <label for="brochureLink">Brochure Link:</label>
+            <input type="url" id="brochureLink" name="brochureLink" 
+                value="{{ old('category_id') == 'new' ? old('brochureLink') : ($category->brochureLink ?? '') }}">
+        </div>
+        <div class="form-group">
+            <label for="imageURL">Image URL:</label>
+            <input type="url" id="imageURL" name="imageURL" 
+                value="{{ old('category_id') == 'new' ? old('imageURL') : ($category->imageURL ?? '') }}">
+        </div>
+        </div>
 
-<div class="form-group">
-    <label for="imageURL">Image URL:</label>
-    <input type="url" id="imageURL" name="imageURL" 
-           value="{{ old('category_id') == 'new' ? old('imageURL') : ($category->imageURL ?? '') }}">
-</div>
-
-</div>
-
-    
-           
-           
             <div class="form-group">
                 <label for="model">Model:</label>
                 <input type="text" id="model" name="model" value="{{ old('model')}}" required>

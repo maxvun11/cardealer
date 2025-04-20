@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @can('isAdmin')
+    @can('update-car')
     <div class="wedo" style="display: flex; justify-content: flex-end;padding-right:50px; padding-top:50px; ">
         <button style="width:fit-content;"onclick="window.location.href='{{ route('updateCar') }}'">Update Car Inventory</button>
         </div>
@@ -43,7 +43,7 @@
                                         <div class="col-md-6 margin_bottom">
                                             <a href="{{ route('carDetailPage', $category->id) }}">
                                                 <div class="work parallax">
-                                                <div class="parallax-image" style="background-image: url('{{ $category->brandImageURL }}');">
+                                                <div class="parallax-image" style="background-image: url('{{ $brand->brandImageURL}}');">
                                                         <div class="work_text" style="background-image: url('{{ $category->imageURL }}'); background-position:center; background-size:cover; background-blend-mode: multiply;">
                                                             <h3>{{ strtoupper($brand->brandName) }}<br>
                                                             <span class="blu">{{ $category->categoryName }}</span></h3>

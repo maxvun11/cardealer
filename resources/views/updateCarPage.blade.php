@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
 @if (session('success'))
 <br>
     <div class="alert alert-success " role="alert">
         {{ session('success') }}
-        
     </div>
 @endif
     <div class="container">
-       
+    <br>
     <h1 style="margin-top:50px; text-align:center;">Update Car Inventory - Brand</h1>
    
         <table class="table table-bordered table-striped" style="margin: 0 auto;" >

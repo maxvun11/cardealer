@@ -18,7 +18,7 @@ class ContactController extends Controller
         Contact::create($request->only('full_name', 'email', 'phone_number', 'message'));
     
         if ($request->ajax()) {
-            return response()->json(['success' => true]);
+            return response()->json(['success_contact' => true]);
         }
     
         return back()->with('success', 'Message sent successfully!');

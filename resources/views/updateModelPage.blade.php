@@ -7,10 +7,10 @@
 <br>
     <div class="alert alert-success " role="alert">
         {{ session('success') }}
-        
     </div>
 @endif
 <div class="container">
+    <br>
     <h1 style="margin-top:50px; text-align:center;">Update Car Inventory - {{$brand->brandName}}</h1>
 <div  class="row justify-content-center">
     <table class="table table-bordered table-striped text-center" >

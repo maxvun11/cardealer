@@ -15,10 +15,10 @@ class CarSeeder extends Seeder
     public function run(): void
     {
         DB::table('brands')->insert([
-            ['brandName' => 'TOYOTA', 'description'=> 'One of the most well known Japanese Brand'],
-            ['brandName' => 'NISSAN', 'description'=> 'Well known for its JDM Sport Cars'],
-            ['brandName' => 'FERRARI',  'description'=> 'Europe Most Wanted'],
-            ['brandName' => 'FORD', 'description'=> 'The American Flag'],
+            ['brandName' => 'TOYOTA', 'description'=> 'One of the most well known Japanese Brand', 'brandImageURL' => 'https://www.pixground.com/wp-content/uploads/2023/08/Toyota-GR-Supra-3.0-MT-4K-Wallpaper-1081x608.jpg'],
+            ['brandName' => 'NISSAN', 'description'=> 'Well known for its JDM Sport Cars', 'brandImageUrl' => 'https://images6.alphacoders.com/503/thumb-1920-503717.jpg'],
+            ['brandName' => 'FERRARI',  'description'=> 'Europe Most Wanted', 'brandImageURL' => 'https://images3.alphacoders.com/576/thumb-1920-576239.jpg'],
+            ['brandName' => 'FORD', 'description'=> 'The American Flag', 'brandImageURL' => 'https://images2.alphacoders.com/250/thumb-1920-250920.jpg'],
         ]);
 
         
