@@ -32,6 +32,18 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <title>@yield('title', 'Pythogorax')</title>
+
+    <style>
+
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #F93C1E !important;
+        }
+    </style>
+
 </head>
 <!-- body -->
 
@@ -50,16 +62,15 @@
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                         <div class="full">
                             <div class="center-desk">
-                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                                    <div class="full text-start">
-                                        <div class="logo">
-                                            <button class="btn p-0 border-0 bg-transparent" id="openSliderBtn">
-                                                <img src="{{ asset('images/logo.png') }}" alt="Logo" />
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div class="logo d-flex align-items-center justify-content-between">
+                                    <a href="{{ url('#contact') }}">
+                                        <img src="{{ asset('images/logo.png') }}" alt="Logo" />
+                                    </a>
+                                    @if(Auth::check())
+                                        <span class="nav-link text-white" style="font-size: 20px; font-weight: bold;">Welcome, {{ Auth::user()->name }}!</span>
+                                    @endif
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -90,7 +101,18 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('viewCarPage') }}">Cars</a>
                                 </li>
+<<<<<<< HEAD
                                 @can('update-car')
+=======
+
+                                @if(Gate::allows('update-car'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('updateCarPage') }}">Update Car</a>
+                                    </li>
+                                @endif
+
+                                @can('isAdmin')
+>>>>>>> upstream/main
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('viewAppointmentPage') }}">View Appointment</a>
                                     </li>
@@ -104,9 +126,19 @@
                                     <a class="nav-link" href="#contact">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('loginPage') }}">
-                                        <i class="fa fa-user-circle padd_right" aria-hidden="true"></i>Login/Sign Up
-                                    </a>
+                                    @if(Auth::check())
+                                        <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-sign-out-alt padd_right" aria-hidden="true"></i>Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+                                    @else
+                                        <a class="nav-link" href="{{ url('loginPage') }}">
+                                            <i class="fa fa-user-circle padd_right" aria-hidden="true"></i>Login/Sign Up
+                                        </a>
+                                    @endif  
                                 </li>
                             </ul>
                         </div>
