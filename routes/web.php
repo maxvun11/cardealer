@@ -27,7 +27,7 @@ Route::get('/viewCarPage',[CarController::class, 'showAllCar'])->name('viewCar')
 
 
 
-//Route::middleware('can:update-car')->group(function () {
+Route::middleware('can:update-car')->group(function () {
     Route::post('/createCar/{id}', [CarController::class, 'createCar'])->name('createCar');
     Route::post('/createBrand',[CarController::class, 'createBrand'])->name('createBrand');
     Route::get('/createCarFormPage/{id}', [CarController::class,'showCreateModelPage'])-> name('createCarForm');
@@ -43,7 +43,7 @@ Route::get('/viewCarPage',[CarController::class, 'showAllCar'])->name('viewCar')
     Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
     Route::get('/viewAppointmentPage', [AppointmentController::class, 'index'])->name('viewAppointmentPage');
     Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');
-//});
+});
 
 
 
