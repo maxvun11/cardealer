@@ -53,10 +53,9 @@ class CarController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'required|integer',
+            'category'=> 'required_if:category_id,new|string|max:255',
             'model' => 'required|string',
-            'brandImageURL' => 'required|url',
             'brochureLink' => 'required|url',
-            'brandImageURL' => 'required|url',
             'imageURL' => 'required|url',
             'modelDesc' => 'required|string',
             'modelDesc2' => 'nullable|string',
@@ -101,7 +100,8 @@ class CarController extends Controller
         
         $validated = $request->validate([
             'brand' => 'required|string|max:255',
-            'brand_desc' => 'required|string|max:255'
+            'brand_desc' => 'required|string|max:255',
+            'brandImageURL' => 'required|url',
         ]);
     
         if (Brand::where('brandName', $request->input('brand'))->exists()) {
@@ -115,6 +115,7 @@ class CarController extends Controller
             $brand = Brand::create([
                 'brandName' => $validated['brand'],
                 'description' => $validated['brand_desc'],
+                'brandImageURL' => $validated['brandImageURL'],
             ]);
         }
         return redirect()->route('updateCar')->with('success', 'Car Inventory Created Successfully.');
