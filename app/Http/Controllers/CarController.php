@@ -64,7 +64,16 @@ class CarController extends Controller
     
         $category = CarCategory::findOrFail($request->category_id);
         $model = CarModel::findOrFail($request->model_id);
-    
+        $modelCount = CarModel::where('modelName', $request->model)
+        ->where('car_categories_id', $category->id)
+        ->count();
+
+        if ($modelCount > 0) {
+        return redirect()->back()
+        ->withErrors(['model' => 'This car model already exists in the selected category.'])
+        ->withInput();
+        }
+        
         $category->update([
             'brochureLink' => $validated['brochureLink'],
             'imageURL' => $validated['imageURL'],
@@ -77,16 +86,6 @@ class CarController extends Controller
             'description3' => $validated['modelDesc3'],
             'car_categories_id' => $validated['category_id'],
         ]);
-        
-        $modelCount = CarModel::where('modelName', $request->model)
-        ->where('car_categories_id', $category->id)
-        ->count();
-
-        if ($modelCount > 1) {
-        return redirect()->back()
-        ->withErrors(['model' => 'This car model already exists in the selected category.'])
-        ->withInput();
-        }
         return redirect()->route('updateCategory', ['id' => $request->brand_id])
                  ->with('success', 'Car inventory updated successfully.');
 
@@ -181,18 +180,18 @@ class CarController extends Controller
     public function showUpdateModelPage(Request $request)
     {
         $id = $request->id;
+        $brandID = $request->brandID;
         $model = CarModel::findOrFail($id);
-        $category_id = CarModel::findOrFail($id)->car_categories_id;
+        $category_id = $model->car_categories_id;
         $category = CarCategory::findOrFail($category_id);
-        $categories = CarCategory::all();
-    
-        return view('updateCarFormPage', compact('model','category', 'categories'));
+        $categories = CarCategory::where('brand_id', $brandID)->get();
+        return view('updateCarFormPage', compact('model', 'category', 'categories'));
     }
 
     public function showCreateModelPage(Request $request, $id)
     {
         $brand_id = $id;
-        $categories = CarCategory::all();
+        $categories = CarCategory::where('brand_id', $id)->get();
     
         return view('createCarFormPage', compact('brand_id', 'categories'));
     }

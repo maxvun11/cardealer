@@ -27,7 +27,7 @@ class RegisterController extends Controller
         User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => Hash::make($validated['password']), // Must hash
+            'password' => Hash::make($validated['password']), 
         ]);
 
         return redirect()->route('loginPage');

@@ -68,8 +68,8 @@
 <style>
     .remember-me-container {
         display: flex;
-        align-items: center; /* Aligns checkbox with label */
-        justify-content: center; /* Centers horizontally */
+        align-items: center; 
+        justify-content: center; 
     }
 
     .remember-me-container input[type="checkbox"] {
@@ -77,7 +77,7 @@
         height: 18px;
         margin-right: 8px;
         position: relative;
-        top: -4px; /* Moves checkbox up slightly */
+        top: -4px; 
     }
 
     .remember-me-container label {
@@ -93,14 +93,14 @@
         var countdownMessage = document.getElementById("countdown-message");
 
         if (lockoutTime > 0) {
-            loginBtn.disabled = true; // Disable login button
-            countdownElement.innerText = lockoutTime; // Initialize countdown display
+            loginBtn.disabled = true;
+            countdownElement.innerText = lockoutTime; 
 
             var interval = setInterval(function() {
                 if (lockoutTime <= 0) {
                     clearInterval(interval);
-                    loginBtn.disabled = false; // Re-enable login button
-                    countdownMessage.style.display = "none"; // Hide countdown section
+                    loginBtn.disabled = false; 
+                    countdownMessage.style.display = "none"; 
                 } else {
                     countdownElement.innerText = lockoutTime--;
                 }

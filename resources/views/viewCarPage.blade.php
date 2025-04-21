@@ -4,11 +4,7 @@
 
 @section('content')
 
-    @can('update-car')
-    <div class="wedo" style="display: flex; justify-content: flex-end;padding-right:50px; padding-top:50px; ">
-        <button style="width:fit-content;"onclick="window.location.href='{{ route('updateCar') }}'">Update Car Inventory</button>
-        </div>
-    @endcan
+  
         <!-- Brand Buttons -->
         <div class="wedo" >
     </div>
@@ -64,7 +60,7 @@
         <script>
             function scrollToBrand(brandId) {
                 const element = document.getElementById(brandId);
-                const yOffset = -80; // Adjust this value to position the heading properly
+                const yOffset = -80; 
                 const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }

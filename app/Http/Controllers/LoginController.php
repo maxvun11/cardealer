@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        // Validate input fields
+        
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -21,32 +21,32 @@ class LoginController extends Controller
         $key = 'login-attempts:' . $request->ip();
 
         if (RateLimiter::tooManyAttempts($key, 2)) {
-            $secondsRemaining = RateLimiter::availableIn($key); // Get remaining time
+            $secondsRemaining = RateLimiter::availableIn($key); 
             return back()->withErrors([
                 'email' => "Too many login attempts. Please wait $secondsRemaining seconds.",
-                'lockout_time' => $secondsRemaining // Pass lockout time to frontend
+                'lockout_time' => $secondsRemaining 
             ]);
         }
 
         $remember = $request->has('remember');
 
-        // Attempt to authenticate the user
+        
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             session(['user_role' => Auth::user()->role]);
             
             if ($remember) 
             {
-                Cookie::queue('user_role', Auth::user()->role, 4320); // Store for 3 days
+                Cookie::queue('user_role', Auth::user()->role, 4320); 
             } else {
-                Cookie::queue(Cookie::forget('user_role')); // Remove cookie if unchecked
+                Cookie::queue(Cookie::forget('user_role')); 
             }
 
             return redirect()->intended('/');
         }
         RateLimiter::hit($key, 60);
 
-        // Redirect back with error message
+       
         return back()->withErrors([
             'email' => 'Invalid credentials.',
         ]);

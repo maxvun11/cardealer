@@ -107,7 +107,7 @@
 
             if (message) {
                 alert(message);
-                // Optional: Clear the message after display
+                
                 flashMessage.dataset.message = '';
             }
         });
