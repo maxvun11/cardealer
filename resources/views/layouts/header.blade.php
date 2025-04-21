@@ -93,7 +93,7 @@
                     
                                     @if(Gate::allows('update-car'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('updateCarPage') }}">Update Car</a>
+                                            <a class="nav-link" href="{{ route('updateCar') }}">Update Car Inventory</a>
                                         </li>
                                     @endif
                     

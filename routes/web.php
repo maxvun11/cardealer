@@ -47,7 +47,7 @@ Route::middleware('can:update-car')->group(function () {
 
 
 
-Route::get('/bookCarPage/{id}', [CarViewController::class, 'create'])->name('bookCarPage');
+Route::get('/bookCarPage/{id}', [CarViewController::class, 'create'])->name('bookCarPage')->middleware('auth');
 
 Route::get('/contactUsPage', function () {
     return view('contactUsPage');
@@ -55,7 +55,7 @@ Route::get('/contactUsPage', function () {
 
 Route::get('/afterSalesPage', function () {
     return view('afterSalesPage');
-});
+})->middleware('auth');
 
 Route::get('/loginPage', function () {
     return view('loginPage');
