@@ -87,7 +87,7 @@
                     .text('Message sent successfully!')
                     .fadeIn();
 
-                // Hide after 3 seconds
+                // hide after 3 seconds
                 setTimeout(function () {
                     $('#success-message').fadeOut();
                 }, 3000);

@@ -60,7 +60,7 @@
         <script>
             function scrollToBrand(brandId) {
                 const element = document.getElementById(brandId);
-                const yOffset = -80; // Adjust this value to position the heading properly
+                const yOffset = -80; 
                 const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
