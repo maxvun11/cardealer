@@ -59,7 +59,8 @@
                     <td>{{ $model->description3 ?? '-' }}</td>
 
                     <td>
-                        <button onclick="window.location.href='{{ route('updateCarForm', $model->id) }}'">Edit</button> 
+                    <button onclick="window.location.href='{{ route('updateCarForm', ['id' => $model->id, 'brandID' => $brand->id]) }}'">Edit</button>
+
 </td>
 <td>
                         <form action="{{ route('deleteCar', $model->id) }}" method="POST" style="display:inline-block;">

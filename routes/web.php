@@ -35,12 +35,12 @@ Route::middleware('can:update-car')->group(function () {
         return view('createBrandFormPage');
     })-> name('createBrandForm');
     Route::get('/updateCarPage', [CarController::class,'showUpdatePage'])->name('updateCar');
-    Route::get('/updateCarFormPage/{id}', [CarController::class,'showUpdateModelPage'])->name('updateCarForm');
+    Route::get('/updateCarFormPage/{id}/{brandID}', [CarController::class,'showUpdateModelPage'])->name('updateCarForm');
     Route::get('/updateCarPage/{id}', [CarController::class,'showCategoryUpdatePage'])->name('updateCategory');
     
-    Route::put('/updateCarModel', [Cars::class, 'updateCar'])->name('updateModel');
-    Route::delete('/brands/{id}', [Cars::class, 'deleteBrand'])->name('deleteBrand');
-    Route::delete('/cars/{id}', [Cars::class, 'deleteCar'])->name('deleteCar');
+    Route::put('/updateCarModel', [CarController::class, 'updateCar'])->name('updateModel');
+    Route::delete('/brands/{id}', [CarController::class, 'deleteBrand'])->name('deleteBrand');
+    Route::delete('/cars/{id}', [CarController::class, 'deleteCar'])->name('deleteCar');
     Route::get('/viewAppointmentPage', [AppointmentController::class, 'index'])->name('viewAppointmentPage');
     Route::post('/bookCarPage', [CarViewController::class, 'store'])->name('carviews.store');
 });
