@@ -191,7 +191,7 @@ class CarController extends Controller
     public function showCreateModelPage(Request $request, $id)
     {
         $brand_id = $id;
-        $categories = CarCategory::all();
+        $categories = CarCategory::where('brand_id', $id)->get();
     
         return view('createCarFormPage', compact('brand_id', 'categories'));
     }
