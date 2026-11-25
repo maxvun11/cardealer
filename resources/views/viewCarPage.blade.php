@@ -3,7 +3,19 @@
 @section('title', 'Car List')
 
 @section('content')
-
+    @if($brands->isEmpty())
+        <section class="wedo py-5">
+            <div class="container text-center">
+                <div class="titlepage">
+                    <h2>Our Collection</h2>
+                    <p>We're preparing our car collection. Please check back soon.</p>
+                </div>
+                @can('update-car')
+                    <a href="{{ route('updateCar') }}" class="read_more">Manage Inventory</a>
+                @endcan
+            </div>
+        </section>
+    @else
     @can('update-car')
     <div class="wedo" style="display: flex; justify-content: flex-end;padding-right:50px; padding-top:50px; ">
         <button style="width:fit-content;"onclick="window.location.href='{{ route('updateCar') }}'">Update Car Inventory</button>
@@ -69,4 +81,5 @@
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         </script>
+    @endif
 @endsection

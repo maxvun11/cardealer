@@ -163,11 +163,19 @@
 
 
     <script>
-        document.getElementById('openSliderBtn').addEventListener('click', function () {
-            document.getElementById('customSlider').classList.add('show');
-        });
+        const openSliderButton = document.getElementById('openSliderBtn');
+        const closeSliderButton = document.getElementById('closeSliderBtn');
+        const customSlider = document.getElementById('customSlider');
 
-        document.getElementById('closeSliderBtn').addEventListener('click', function () {
+        if (openSliderButton && customSlider) {
+            openSliderButton.addEventListener('click', function () {
+                customSlider.classList.add('show');
+            });
+        }
+
+        if (closeSliderButton && customSlider) {
+            closeSliderButton.addEventListener('click', function () {
             document.getElementById('customSlider').classList.remove('show');
-        });
+            });
+        }
     </script>
